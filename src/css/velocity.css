@@ -3,7 +3,8 @@ body {
 }
 
 .brand-logo img {
-    padding-top: 14px;
+    position: relative;
+    top: 11px;
 }
 
 .jumbotron {
