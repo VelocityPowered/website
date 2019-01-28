@@ -21,24 +21,28 @@ function onLoad() {
 
     fetchJenkinsBuilds().then(function(jenkinsResult) {
         // Lightly process the result
-        jenkinsResult.builds.forEach(function(build, i) {
-            build.latest = i === 0;
-            build.formattedDate = new Date(build.timestamp).toLocaleDateString(undefined, {
-                year: "numeric",
-                month: "long",
-                day: "numeric"
-            });
-            build.artifacts.forEach(function(artifact) {
-                artifact.url = "https://ci.velocitypowered.com/job/velocity/" + build.number + "/artifact/" + artifact.relativePath;
-                artifact.type = function() {
-                    if (artifact.fileName.startsWith('velocity-1.0') || artifact.fileName.startsWith('velocity-proxy-')) {
-                        return "Proxy";
-                    }
-
-                    return "Unknown";
-                }
+        jenkinsResult.builds
+            .filter(function(build) {
+                return build.artifacts.length > 0
             })
-        });
+            .forEach(function(build, i) {
+                build.latest = i === 0;
+                build.formattedDate = new Date(build.timestamp).toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                });
+                build.artifacts.forEach(function(artifact) {
+                    artifact.url = "https://ci.velocitypowered.com/job/velocity/" + build.number + "/artifact/" + artifact.relativePath;
+                    artifact.type = function() {
+                        if (artifact.fileName.startsWith('velocity-1.0') || artifact.fileName.startsWith('velocity-proxy-')) {
+                            return "Proxy";
+                        }
+
+                        return "Unknown";
+                    }
+                })
+            });
         app.loading = false;
         app.builds = jenkinsResult.builds;
     })
