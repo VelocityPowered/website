@@ -2,6 +2,15 @@ body {
     font-family: Roboto, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.container-widened {
+    width: 80%;
+    margin: auto
+}
+
+.page-content {
+    margin-bottom: 40px;
+}
+
 .brand-logo img {
     position: relative;
     top: 11px;
@@ -16,21 +25,55 @@ body {
     margin: 0;
 }
 
+.jumbotron a {
+    color: white;
+    text-decoration: underline;
+}
+
 .jumbotron > .jumbotron-btns {
     padding-top: 1rem;
 }
 
 #benefits-intro {
     text-align: center;
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
 
 .benefit-icon {
     font-size: 12rem;
     float: right;
+    padding-right: 30px;
 }
 
 .benefit.section h4 {
-    margin-top: 0.2em;
+    margin-top: 0.3em;
+}
+
+.divider {
+    min-width: 100% !important;
+}
+
+.row {
+    margin-bottom: 0;
+}
+
+#downloads-container {
+    margin-top: 40px;
+}
+
+#prod-warning a {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+
+.page-footer {
+    padding-top: 0
+}
+
+.page-footer .container {
+    padding-top: 10px;
+    padding-bottom: 10px
 }
 
 @media (max-width: 600px) {
@@ -49,13 +92,4 @@ body {
     #benefits-intro {
         padding: 0 1rem;
     }
-}
-
-.row {
-    margin-bottom: 0;
-}
-
-#prod-warning a {
-    color: #ffffff !important;
-    text-decoration: underline;
 }
